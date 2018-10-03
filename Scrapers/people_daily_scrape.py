@@ -41,9 +41,6 @@ for i in range(0,152): # number of search result pages
     ### Access each link and scrape contents
     
     # Click next
-    
-    elm = browser.find_element_by_class_name('next')
-    
     try:
         browser.find_element(By.XPATH, '//a[contains(text(), "Next")]').click()
     except:
