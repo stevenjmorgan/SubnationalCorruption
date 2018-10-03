@@ -37,6 +37,17 @@ for i in range(0,152): # number of search result pages
     print(len(elems))
     elems = elems[::2]
     #print([x.get_attribute("href") for x in elems])
+    
+    ### Access each link and scrape contents
+    
+    # Click next
+    
+    elm = browser.find_element_by_class_name('next')
+    
+    try:
+        browser.find_element(By.XPATH, '//a[contains(text(), "Next")]').click()
+    except:
+        break
 
 
 
