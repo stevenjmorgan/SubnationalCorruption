@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Oct  3 17:02:05 2018
+Created on Wed Oct  3 17:15:05 2018
 
-@author: Steven Morgan
+@author: sum410
 """
 
 import os
@@ -32,7 +32,7 @@ browser.get(url)
 
 search_bar = browser.find_element_by_css_selector("input[id='keyword']")
 search_bar = browser.find_element_by_id('keyword')
-search_bar.send_keys('corrupt' + '\n')
+search_bar.send_keys('corruption' + '\n')
 
 seed = 24519
 random.seed(seed)
@@ -135,12 +135,3 @@ for i in range(0,152): # number of search result pages 152
         break
 
 
-
-'''
-url = 'http://search.people.com.cn/language/english/getResult.jsp'
-browser.get(url)
-
-search_bar = browser.find_element_by_css_selector("input[id='keyword']")
-search_bar = browser.find_element_by_id('keyword')
-search_bar.send_keys('corruption' + '\n')
-'''
