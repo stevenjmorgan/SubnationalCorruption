@@ -14,6 +14,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import urllib.request
+from collections import Counter
 #import requests
 
 #reload(sys)                        # Only necessary for Python 2
@@ -45,10 +46,17 @@ for i in range(0,152): # number of search result pages 152
         time.sleep(5)
 
     elems = browser.find_elements_by_xpath("//a[@href]")
-    elems = [x for x in elems if re.search('http://english.people.com.cn/n3/', str(x.get_attribute("href")))]
-    print(len(elems))
-    elems = elems[::2] # this should probably be set
+    #elems = [x for x in elems if re.search('http://english.people.com.cn/n3/|http://english.people.com.cn/n/', str(x.get_attribute("href")))]
     elems = [a.get_attribute('href') for a in elems]
+    cnt = Counter(elems)
+    print(elems)
+    elems = ([k for k, v in cnt.items() if v > 1]) # Getting two extraneous links
+    #elems = [x for x in elems if not re.match('http://english.people.com.cn/', x)]
+    print(elems)
+    
+    print(len(elems))
+    #elems = elems[::2] # this should probably be set
+    #elems = [a.get_attribute('href') for a in elems]
     #print([x.get_attribute("href") for x in elems])
     #print(elems)
 
