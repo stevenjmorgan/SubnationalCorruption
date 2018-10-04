@@ -20,7 +20,7 @@ from collections import Counter
 #reload(sys)                        # Only necessary for Python 2
 #sys.setdefaultencoding('utf8')     # Only necessary for Python 2
 
-os.chdir("C:/Users/sum410/Dropbox/PSU2018-2019/Fall2018/SODA502/Subnational_Corruption")
+os.chdir("C:/Users/sum410/Dropbox/PSU2018-2019/Fall2018/SODA502/Subnational_Corruption/Corrupt_Files_Chinese")
 #os.chdir('C:/Users/Steve/Dropbox/PSU2018-2019/Fall2018/SODA502/Subnational_Corruption')
 
 # Initiate web driver
@@ -28,19 +28,20 @@ path_to_chromedriver = 'C:/Users/sum410/Desktop/chromedriver'
 #path_to_chromedriver = 'C:/Users/Steve/Desktop/chromedriver'
 browser = webdriver.Chrome(executable_path = path_to_chromedriver)
 
-url = 'http://search.people.com.cn/cnpeople/news/getNewsResult.jsp' #
+url = 'http://search.people.com.cn/cnpeople/news/getNewsResult.jsp'
 browser.get(url)
 
 search_bar = browser.find_element_by_css_selector("input[id='keyword']")
 search_bar = browser.find_element_by_id('keyword')
-search_bar.send_keys('corrupt' + '\n')
+search_bar.clear()
+search_bar.send_keys(str(u'腐败') + '\n')
 
 seed = 24519
 random.seed(seed)
 counter = 0
 
 # Iterate through links (nested for loop)
-for i in range(0,152): # number of search result pages 152
+for i in range(0, 12500): # number of search result pages 152
 
     if i % 5 == 1:
         time.sleep(5)
@@ -138,11 +139,11 @@ for i in range(0,152): # number of search result pages 152
 
     # Click next
     try:
-        browser.find_element(By.XPATH, '//a[contains(text(), "Next")]').click()
+        browser.find_element(By.XPATH, '//a[contains(text(), "下一页")]').click()
     except:
         break
 
-
+#<a href="/cnpeople/search.do?pageNum=2&amp;keyword=腐败&amp;siteName=news&amp;facetFlag=null&amp;nodeType=belongsId&amp;nodeId=">下一页</a>
 
 '''
 url = 'http://search.people.com.cn/language/english/getResult.jsp'
