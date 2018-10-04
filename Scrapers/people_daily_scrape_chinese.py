@@ -28,7 +28,7 @@ path_to_chromedriver = 'C:/Users/sum410/Desktop/chromedriver'
 #path_to_chromedriver = 'C:/Users/Steve/Desktop/chromedriver'
 browser = webdriver.Chrome(executable_path = path_to_chromedriver)
 
-url = 'http://search.people.com.cn/language/english/getResult.jsp'
+url = 'http://search.people.com.cn/cnpeople/news/getNewsResult.jsp' #
 browser.get(url)
 
 search_bar = browser.find_element_by_css_selector("input[id='keyword']")
