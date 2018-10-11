@@ -38,13 +38,20 @@ search_bar.send_keys(str(u'腐败') + '\n')
 
 seed = 24519
 random.seed(seed)
-counter = 0
+counter = 1000000
+
+for i in range(0, 1000):
+    try:
+        browser.find_element(By.XPATH, '//a[contains(text(), "下一页")]').click()
+    except:
+        break
+    time.sleep(12)
 
 # Iterate through links (nested for loop)
-for i in range(0, 12500): # number of search result pages 152
+for i in range(0, 12500): # number of search result pages 12500
 
-    if i % 5 == 1:
-        time.sleep(5)
+    #if i % 5 == 1:
+    time.sleep(5)
 
     elems = browser.find_elements_by_xpath("//a[@href]")
     #elems = [x for x in elems if re.search('http://english.people.com.cn/n3/|http://english.people.com.cn/n/', str(x.get_attribute("href")))]
@@ -142,14 +149,3 @@ for i in range(0, 12500): # number of search result pages 152
         browser.find_element(By.XPATH, '//a[contains(text(), "下一页")]').click()
     except:
         break
-
-#<a href="/cnpeople/search.do?pageNum=2&amp;keyword=腐败&amp;siteName=news&amp;facetFlag=null&amp;nodeType=belongsId&amp;nodeId=">下一页</a>
-
-'''
-url = 'http://search.people.com.cn/language/english/getResult.jsp'
-browser.get(url)
-
-search_bar = browser.find_element_by_css_selector("input[id='keyword']")
-search_bar = browser.find_element_by_id('keyword')
-search_bar.send_keys('corruption' + '\n')
-'''
